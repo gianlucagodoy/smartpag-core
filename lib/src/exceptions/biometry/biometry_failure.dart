@@ -1,10 +1,10 @@
-import 'package:zukcore/src/core.dart';
+import '../../interfaces/exceptions/zuk_exceptions.dart';
 
-/// A classe abstrata "ZukBiometryFailure" é uma implementação da interface [ZukException].
-/// Ela define uma estrutura básica para exceções relacionadas a falhas na biometria no contexto do sistema Zuk.
+/// A classe abstrata "SmartBiometryFailure" é uma implementação da interface [SmartException].
+/// Ela define uma estrutura básica para exceções relacionadas a falhas na biometria no contexto do sistema Smart.
 /// A classe possui um construtor que recebe o nome da classe que a está estendendo e uma mensagem opcional.
-abstract class ZukBiometryFailure implements ZukException {
-  const ZukBiometryFailure(
+abstract class SmartBiometryFailure implements SmartException {
+  const SmartBiometryFailure(
     this.className, [
     this.message,
   ]);
@@ -14,62 +14,62 @@ abstract class ZukBiometryFailure implements ZukException {
   final String className;
 }
 
-/// As subclasses [ZukBiometryRequestError], [ZukBiometryUnauthorizedError],
-/// [ZukBiometryForbiddenError], [ZukBiometryInternalError] e [ZukBiometryUnkownError]
-/// estendem a classe [ZukBiometryFailure] e representam diferentes tipos de falhas relacionadas à biometria.
+/// As subclasses [SmartBiometryRequestError], [SmartBiometryUnauthorizedError],
+/// [SmartBiometryForbiddenError], [SmartBiometryInternalError] e [SmartBiometryUnkownError]
+/// estendem a classe [SmartBiometryFailure] e representam diferentes tipos de falhas relacionadas à biometria.
 /// Cada uma delas possui um construtor que chama o construtor da classe pai e passa o nome da classe específica
 /// e uma mensagem opcional.
 ///
-///Essas classes podem ser utilizadas para capturar e tratar exceções específicas relacionadas a falhas na biometria no sistema Zuk.
-class ZukBiometryRequestError extends ZukBiometryFailure {
-  const ZukBiometryRequestError([String? messageException])
-      : super('ZukBiometryRequestError', messageException);
+///Essas classes podem ser utilizadas para capturar e tratar exceções específicas relacionadas a falhas na biometria no sistema Smart.
+class SmartBiometryRequestError extends SmartBiometryFailure {
+  const SmartBiometryRequestError([String? messageException])
+      : super('SmartBiometryRequestError', messageException);
 }
 
-/// As subclasses [ZukBiometryRequestError], [ZukBiometryUnauthorizedError],
-/// [ZukBiometryForbiddenError], [ZukBiometryInternalError] e [ZukBiometryUnkownError]
-/// estendem a classe [ZukBiometryFailure] e representam diferentes tipos de falhas relacionadas à biometria.
+/// As subclasses [SmartBiometryRequestError], [SmartBiometryUnauthorizedError],
+/// [SmartBiometryForbiddenError], [SmartBiometryInternalError] e [SmartBiometryUnkownError]
+/// estendem a classe [SmartBiometryFailure] e representam diferentes tipos de falhas relacionadas à biometria.
 /// Cada uma delas possui um construtor que chama o construtor da classe pai e passa o nome da classe específica
 /// e uma mensagem opcional.
 ///
-///Essas classes podem ser utilizadas para capturar e tratar exceções específicas relacionadas a falhas na biometria no sistema Zuk.
-class ZukBiometryUnauthorizedError extends ZukBiometryFailure {
-  const ZukBiometryUnauthorizedError([String? messageException])
-      : super('ZukBiometryUnauthorizedError', messageException);
+///Essas classes podem ser utilizadas para capturar e tratar exceções específicas relacionadas a falhas na biometria no sistema Smart.
+class SmartBiometryUnauthorizedError extends SmartBiometryFailure {
+  const SmartBiometryUnauthorizedError([String? messageException])
+      : super('SmartBiometryUnauthorizedError', messageException);
 }
 
-/// As subclasses [ZukBiometryRequestError], [ZukBiometryUnauthorizedError],
-/// [ZukBiometryForbiddenError], [ZukBiometryInternalError] e [ZukBiometryUnkownError]
-/// estendem a classe [ZukBiometryFailure] e representam diferentes tipos de falhas relacionadas à biometria.
+/// As subclasses [SmartBiometryRequestError], [SmartBiometryUnauthorizedError],
+/// [SmartBiometryForbiddenError], [SmartBiometryInternalError] e [SmartBiometryUnkownError]
+/// estendem a classe [SmartBiometryFailure] e representam diferentes tipos de falhas relacionadas à biometria.
 /// Cada uma delas possui um construtor que chama o construtor da classe pai e passa o nome da classe específica
 /// e uma mensagem opcional.
 ///
-///Essas classes podem ser utilizadas para capturar e tratar exceções específicas relacionadas a falhas na biometria no sistema Zuk.
-class ZukBiometryForbiddenError extends ZukBiometryFailure {
-  const ZukBiometryForbiddenError([String? messageException])
-      : super('ZukBiometryForbiddenError', messageException);
+///Essas classes podem ser utilizadas para capturar e tratar exceções específicas relacionadas a falhas na biometria no sistema Smart.
+class SmartBiometryForbiddenError extends SmartBiometryFailure {
+  const SmartBiometryForbiddenError([String? messageException])
+      : super('SmartBiometryForbiddenError', messageException);
 }
 
-/// As subclasses [ZukBiometryRequestError], [ZukBiometryUnauthorizedError],
-/// [ZukBiometryForbiddenError], [ZukBiometryInternalError] e [ZukBiometryUnkownError]
-/// estendem a classe [ZukBiometryFailure] e representam diferentes tipos de falhas relacionadas à biometria.
+/// As subclasses [SmartBiometryRequestError], [SmartBiometryUnauthorizedError],
+/// [SmartBiometryForbiddenError], [SmartBiometryInternalError] e [SmartBiometryUnkownError]
+/// estendem a classe [SmartBiometryFailure] e representam diferentes tipos de falhas relacionadas à biometria.
 /// Cada uma delas possui um construtor que chama o construtor da classe pai e passa o nome da classe específica
 /// e uma mensagem opcional.
 ///
-///Essas classes podem ser utilizadas para capturar e tratar exceções específicas relacionadas a falhas na biometria no sistema Zuk.
-class ZukBiometryInternalError extends ZukBiometryFailure {
-  const ZukBiometryInternalError([String? messageException])
-      : super('ZukBiometryInternalError', messageException);
+///Essas classes podem ser utilizadas para capturar e tratar exceções específicas relacionadas a falhas na biometria no sistema Smart.
+class SmartBiometryInternalError extends SmartBiometryFailure {
+  const SmartBiometryInternalError([String? messageException])
+      : super('SmartBiometryInternalError', messageException);
 }
 
-/// As subclasses [ZukBiometryRequestError], [ZukBiometryUnauthorizedError],
-/// [ZukBiometryForbiddenError], [ZukBiometryInternalError] e [ZukBiometryUnkownError]
-/// estendem a classe [ZukBiometryFailure] e representam diferentes tipos de falhas relacionadas à biometria.
+/// As subclasses [SmartBiometryRequestError], [SmartBiometryUnauthorizedError],
+/// [SmartBiometryForbiddenError], [SmartBiometryInternalError] e [SmartBiometryUnkownError]
+/// estendem a classe [SmartBiometryFailure] e representam diferentes tipos de falhas relacionadas à biometria.
 /// Cada uma delas possui um construtor que chama o construtor da classe pai e passa o nome da classe específica
 /// e uma mensagem opcional.
 ///
-///Essas classes podem ser utilizadas para capturar e tratar exceções específicas relacionadas a falhas na biometria no sistema Zuk.
-class ZukBiometryUnkownError extends ZukBiometryFailure {
-  const ZukBiometryUnkownError([String? messageException])
-      : super('ZukBiometryUnkownError', messageException);
+///Essas classes podem ser utilizadas para capturar e tratar exceções específicas relacionadas a falhas na biometria no sistema Smart.
+class SmartBiometryUnkownError extends SmartBiometryFailure {
+  const SmartBiometryUnkownError([String? messageException])
+      : super('SmartBiometryUnkownError', messageException);
 }

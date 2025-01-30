@@ -1,11 +1,13 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:smartpag_domain/enums/enums.dart';
+
 import '../../utils/utils.dart';
 import 'transaction_history_model.dart';
 import 'transaction_split_model.dart';
 
 class Transaction extends Equatable {
-  final ZukTransactionStatus? status;
+  final SmartTransactionStatus? status;
   final String? brandDesc;
   final String type;
 
@@ -42,7 +44,7 @@ class Transaction extends Equatable {
 
   final bool isSplitable;
   final bool hasFeesToHolder;
-  final bool hasAcquireZuk;
+  final bool hasAcquireSmart;
   final bool isTransactionOwner;
   final bool isCustomerFee;
 
@@ -72,7 +74,7 @@ class Transaction extends Equatable {
     required this.responseCode,
     required this.hasFeesToHolder,
     required this.acquirerCode,
-    required this.hasAcquireZuk,
+    required this.hasAcquireSmart,
     required this.transactionCode,
     required this.responseMessage,
     required this.isTransactionOwner,
@@ -91,39 +93,39 @@ class Transaction extends Equatable {
     return ["0490", "0450"].contains(histories![histories!.length - 1].mtiCode);
   }
 
-  ZukTransactionType? getTransactionType() {
+  SmartTransactionType? getTransactionType() {
     switch (type.split(" ")[0]) {
       case "Credit":
       case "Crédito":
-        return ZukTransactionType.credit;
+        return SmartTransactionType.credit;
 
       case "Debit":
       case "Débito":
-        return ZukTransactionType.debit;
+        return SmartTransactionType.debit;
       default:
         return null;
     }
   }
 
   static Transaction fromMap(Map<String, dynamic> map) {
-    ZukTransactionStatus? transactionStatus;
+    SmartTransactionStatus? transactionStatus;
 
     switch ((map['status'] ?? "").toUpperCase()) {
       case "APROVADA":
-        transactionStatus = ZukTransactionStatus.approved;
+        transactionStatus = SmartTransactionStatus.approved;
         break;
       case "CANCELADA":
       case "CANCELADO":
-        transactionStatus = ZukTransactionStatus.canceled;
+        transactionStatus = SmartTransactionStatus.canceled;
         break;
       case "DESFEITA":
-        transactionStatus = ZukTransactionStatus.undone;
+        transactionStatus = SmartTransactionStatus.undone;
         break;
       case "NÃO APROVADA":
-        transactionStatus = ZukTransactionStatus.notApproved;
+        transactionStatus = SmartTransactionStatus.notApproved;
         break;
       case "PENDENTE":
-        transactionStatus = ZukTransactionStatus.pending;
+        transactionStatus = SmartTransactionStatus.pending;
         break;
       default:
         transactionStatus = null;
@@ -169,7 +171,7 @@ class Transaction extends Equatable {
       date: map['date'] != null && map['date'].isNotEmpty
           ? DateTime.parse(map['date'])
           : null,
-      hasAcquireZuk: map['acquireZuk'] ?? false,
+      hasAcquireSmart: map['acquireSmart'] ?? false,
       responseMessage: map['responseMessage'] ?? "",
       transactionCode: map['transactionCode'] ?? "",
       isTransactionOwner: map['transactionOwner'] ?? false,
@@ -197,7 +199,7 @@ class Transaction extends Equatable {
       });
     }
 
-    if (transaction.status == ZukTransactionStatus.approved &&
+    if (transaction.status == SmartTransactionStatus.approved &&
         transaction.isTransactionOwner) {
       // 0 - Divisão pendente
       if (transaction.isSplitable &&

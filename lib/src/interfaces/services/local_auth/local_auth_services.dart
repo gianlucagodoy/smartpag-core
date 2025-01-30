@@ -1,4 +1,6 @@
-import 'package:zukcore/src/core.dart';
+import 'package:smartpag_domain/smartpag_domain.dart';
+
+import '../../../models/auth/zuk_auth_message.dart';
 
 ///
 /// Serviços de autenticação local.
@@ -19,8 +21,8 @@ abstract class LocalAuthServices {
   ///
   Future<bool> authenticate({
     required String localizedReason,
-    required Iterable<ZukAuthMessages> authMessages,
-    required ZukAuthenticationOptions options,
+    required Iterable<SmartAuthMessages> authMessages,
+    required SmartAuthenticationOptions options,
   });
 
   ///
@@ -42,5 +44,5 @@ abstract class LocalAuthServices {
   ///
   /// @return Um Future que retorna uma lista de tipos de autenticação biométrica disponíveis.
   ///
-  Future<List<ZukBiometricType>> getAvailableBiometrics();
+  Future<List<SmartBiometricType>> getAvailableBiometrics();
 }

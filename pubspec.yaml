@@ -2,6 +2,7 @@ name: smartpag_core
 description: "A new Flutter package project."
 version: 0.0.1
 homepage:
+publish_to: none  
 
 environment:
   sdk: '>=3.2.2 <4.0.0'
@@ -58,10 +59,10 @@ dependencies:
   mockingjay: ^0.4.0
   geolocator: ^11.0.0
   ## Lib da camada Domino sem referencias obedecendo a sobre-escrita 
-  zukdomain:
-    git:
-      url: "https://gitlab.com/zukpay/front-end/packages/zukdomain.git"
-      ref: main
+  smartpag_domain:
+       git:
+         url: "https://github.com/gianlucagodoy/smartpag-domain"
+         ref: v1.0.0 
 
 dev_dependencies:
   flutter_test:

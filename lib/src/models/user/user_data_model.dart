@@ -52,7 +52,7 @@ class UserData extends Equatable {
 /// documento principal, telefone principal, CEP, número, bairro, cidade, estado e inscrição estadual.
 ///
 class UserInfo extends Equatable {
-  final int ZukId;
+  final int SmartId;
   final String? name;
   final String? cpfCnpj;
   final String? email;
@@ -79,7 +79,7 @@ class UserInfo extends Equatable {
   final String? ie;
 
   const UserInfo({
-    required this.ZukId,
+    required this.SmartId,
     required this.name,
     required this.cpfCnpj,
     required this.email,
@@ -108,7 +108,7 @@ class UserInfo extends Equatable {
 
   @override
   List<Object?> get props => [
-        ZukId,
+        SmartId,
         name,
         cpfCnpj,
         email,
@@ -137,7 +137,7 @@ class UserInfo extends Equatable {
 
   Map<String, dynamic> toMap() {
     return {
-      "ZukId": ZukId,
+      "SmartId": SmartId,
       "name": name,
       "cpfCnpj": cpfCnpj,
       "email": email,
@@ -167,7 +167,7 @@ class UserInfo extends Equatable {
 
   static UserInfo fromMap(Map<String, dynamic> map) {
     return UserInfo(
-      ZukId: map['ZukId'] ?? 0,
+      SmartId: map['SmartId'] ?? 0,
       name: map['name'] ?? "",
       cpfCnpj: map['cpfCnpj'] ?? "",
       email: map['email'] ?? "",

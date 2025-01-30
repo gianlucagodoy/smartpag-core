@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 
 import '../helper.dart';
+import '../masks/zuk_mask_text_input_formatters.dart';
 
 ///
 /// A classe [CellphoneMaskTextInputFormatter] é uma classe que herda de [TextInputFormatter]
@@ -39,25 +40,25 @@ class CellphoneMaskTextInputFormatter extends TextInputFormatter {
 
     if (text.length == 11) {
       return TextEditingValue(
-        text: ZukMaskTextInputFormatters.phoneTextFormatter.maskText(text),
+        text: SmartMaskTextInputFormatters.phoneTextFormatter.maskText(text),
         selection: _updateCursorPosition(newValue,
-            ZukMaskTextInputFormatters.phoneTextFormatter.maskText(text)),
+            SmartMaskTextInputFormatters.phoneTextFormatter.maskText(text)),
       );
     } else if (text.length == 12) {
       return TextEditingValue(
-        text: ZukMaskTextInputFormatters.phoneTextFormatter.maskText(text),
+        text: SmartMaskTextInputFormatters.phoneTextFormatter.maskText(text),
         selection: _updateCursorPosition(
             oldValue,
-            ZukMaskTextInputFormatters.phoneTextFormatter
+            SmartMaskTextInputFormatters.phoneTextFormatter
                 .maskText(oldValue.text.replaceAll(RegExp(r'[^\d]'), ''))),
       );
     } else {
       return TextEditingValue(
-        text: ZukMaskTextInputFormatters.landlinePhoneTextFormatter
+        text: SmartMaskTextInputFormatters.landlinePhoneTextFormatter
             .maskText(text),
         selection: _updateCursorPosition(
             newValue,
-            ZukMaskTextInputFormatters.landlinePhoneTextFormatter
+            SmartMaskTextInputFormatters.landlinePhoneTextFormatter
                 .maskText(text)),
       );
     }

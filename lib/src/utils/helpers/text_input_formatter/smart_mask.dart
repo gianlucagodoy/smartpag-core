@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 
-import '../Zuk_checker_helper.dart';
 import '../masks/zuk_mask_text_input_formatters.dart';
+import '../zuk_checker_helper.dart';
 
 ///
 /// A classe `SmartMaskCpfCnpj` é uma classe que estende a classe `TextInputFormatter` do Flutter.
@@ -29,7 +29,7 @@ class SmartMaskCpfCnpj extends TextInputFormatter {
       TextEditingValue oldValue, TextEditingValue newValue) {
     String newString = '';
     String newValueWithoutMask =
-        ZukCheckerHelper.clearGenericMask(newValue.text);
+        SmartCheckerHelper.clearGenericMask(newValue.text);
     bool isOnlyNumber = int.tryParse(newValueWithoutMask) != null;
     if (!isOnlyNumber) {
       if (useOnlyNumbers) {
@@ -41,14 +41,14 @@ class SmartMaskCpfCnpj extends TextInputFormatter {
         return newValue;
       }
     } else if (newValueWithoutMask.length <= 11) {
-      newString = ZukMaskTextInputFormatters.cpfTextFormatter
+      newString = SmartMaskTextInputFormatters.cpfTextFormatter
           .maskText(newValueWithoutMask);
       return TextEditingValue(
         text: newString,
         selection: TextSelection.collapsed(offset: newString.length),
       );
     } else if (newValueWithoutMask.length > 11) {
-      newString = ZukMaskTextInputFormatters.cnpjTextFormatter
+      newString = SmartMaskTextInputFormatters.cnpjTextFormatter
           .maskText(newValueWithoutMask);
       return TextEditingValue(
         text: newString,

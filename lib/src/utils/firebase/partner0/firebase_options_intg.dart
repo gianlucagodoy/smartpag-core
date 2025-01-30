@@ -45,8 +45,8 @@ class DefaultFirebaseOptionsPartnerIntg {
     apiKey: 'AIzaSyCez5_IW8oIH_HAsw0A71Iz0NHWR1iMRDo',
     appId: '1:916769283604:android:28ad6752ddfb3d470c9101',
     messagingSenderId: '916769283604',
-    projectId: 'zukpay-65fed',
-    storageBucket: 'zukpay-65fed.appspot.com',
+    projectId: 'Smartpay-65fed',
+    storageBucket: 'Smartpay-65fed.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(

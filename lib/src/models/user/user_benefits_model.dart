@@ -1,7 +1,8 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:zukcore/src/models/user/user_data_model.dart';
 import 'package:equatable/equatable.dart';
+
+import '../../../app_lib_core.dart';
 
 ///
 /// Classe que representa os benefícios do usuário

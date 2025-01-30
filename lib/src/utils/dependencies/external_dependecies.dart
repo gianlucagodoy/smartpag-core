@@ -33,4 +33,4 @@ export 'package:firebase_core/firebase_core.dart';
 export 'package:firebase_crashlytics/firebase_crashlytics.dart';
 export 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 // Packages internos
-export 'package:zukdomain/app_lib_domain.dart';
+export 'package:Smartdomain/app_lib_domain.dart';

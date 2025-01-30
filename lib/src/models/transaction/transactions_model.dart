@@ -1,17 +1,19 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:smartpag_domain/enums/enums.dart';
+
 import '../../utils/utils.dart';
 import 'transaction_filter_model.dart';
 import 'transaction_model.dart';
 
 class Transactions extends Equatable {
   List<Transaction> transactions;
-  Map<ZukTransactionStatus, int> transactionCountByStatus = {
-    ZukTransactionStatus.approved: 0,
-    ZukTransactionStatus.notApproved: 0,
-    ZukTransactionStatus.canceled: 0,
-    ZukTransactionStatus.pending: 0,
-    ZukTransactionStatus.undone: 0
+  Map<SmartTransactionStatus, int> transactionCountByStatus = {
+    SmartTransactionStatus.approved: 0,
+    SmartTransactionStatus.notApproved: 0,
+    SmartTransactionStatus.canceled: 0,
+    SmartTransactionStatus.pending: 0,
+    SmartTransactionStatus.undone: 0
   };
 
   @override

@@ -45,8 +45,8 @@ class DefaultFirebaseOptions {
     apiKey: 'AIzaSyCez5_IW8oIH_HAsw0A71Iz0NHWR1iMRDo',
     appId: '1:916769283604:android:28ad6752ddfb3d470c9101',
     messagingSenderId: '916769283604',
-    projectId: 'zukpay-65fed',
-    storageBucket: 'zukpay-65fed.appspot.com',
+    projectId: 'Smartpay-65fed',
+    storageBucket: 'Smartpay-65fed.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
@@ -57,6 +57,6 @@ class DefaultFirebaseOptions {
     storageBucket: 'appcliente-5c07a.appspot.com',
     iosClientId:
         '591754812989-mta3mn881i691349s9283ti18ep4o6p4.apps.googleusercontent.com',
-    iosBundleId: 'com.Zuk.Zukmobile',
+    iosBundleId: 'com.Smart.Smartmobile',
   );
 }

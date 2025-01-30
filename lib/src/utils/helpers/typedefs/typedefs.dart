@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smartpag_domain/entities/entities.dart';
 
 import '../../dependencies/dependecies.dart';
 

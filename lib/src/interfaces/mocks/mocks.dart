@@ -1,5 +1,5 @@
 export './firebase_analytics_mock.dart';
-export './zuk_logger_service_mock.dart';
+export './smart_logger_service_mock.dart';
 export './firebase_crashlytics_mock.dart';
 export './firebase_dynamic_links_mock.dart';
 export './android_device_info_mock.dart';
@@ -9,7 +9,7 @@ export './device_info_mock.dart';
 export './secure_storage_services_mock.dart';
 export './dio_mock.dart';
 export './connectivity_services.dart';
-export './zuk_analytics_services_mock.dart';
+export './smart_analytics_services_mock.dart';
 export './get_it_mock.dart';
 export './local_authentication_mock.dart';
 export './shared_prefs_mock.dart';

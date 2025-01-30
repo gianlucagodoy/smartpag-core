@@ -1,12 +1,14 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:smartpag_domain/enums/enums.dart';
+
 import '../../utils/utils.dart';
 
 class TransactionFilter extends Equatable {
   DateTime endDate = DateTime.now();
   DateTime? startDate;
-  List<ZukTransactionStatus> status;
-  List<ZukTransactionType> type;
+  List<SmartTransactionStatus> status;
+  List<SmartTransactionType> type;
   List<String> brandDesc;
   List<String> pdvs;
   bool getPendingTransactions;

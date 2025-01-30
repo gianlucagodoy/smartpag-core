@@ -1,3 +1,7 @@
+import 'package:smartpag_domain/entities/entities.dart';
+import 'package:smartpag_domain/enums/enums.dart';
+import 'package:smartpag_domain/smartpag_domain.dart';
+
 import '../../../init_core.dart';
 import '../../core.dart';
 
@@ -15,7 +19,7 @@ import '../../core.dart';
 /// Os métodos  _get ,  _post ,  _put ,  _patch  e  _delete  são responsáveis por fazer as requisições
 /// GET, POST, PUT, PATCH e DELETE, respectivamente.
 /// Eles utilizam o cliente Dio para fazer as requisições e retornam a resposta
-/// convertida para a classe  ZukClientResponse .
+/// convertida para a classe  SmartClientResponse .
 ///
 /// O método  _tryRequest  é responsável por tentar fazer a requisição várias vezes em caso de falha.
 /// Ele realiza a requisição e, caso seja bem-sucedida, retorna a resposta.
@@ -52,13 +56,13 @@ class HttpClientServicesImpl implements HttpClientServices {
   /// Os métodos  _get ,  _post ,  _put ,  _patch  e  _delete  são responsáveis por fazer as requisições
   /// GET, POST, PUT, PATCH e DELETE, respectivamente.
   /// Eles utilizam o cliente Dio para fazer as requisições e retornam a resposta
-  /// convertida para a classe [ZukClientResponse].
+  /// convertida para a classe [SmartClientResponse].
   ///
   @override
-  Future<ZukClientResponse> request(
-      {required ZukApiName apiName,
+  Future<SmartClientResponse> request(
+      {required SmartApiName apiName,
       required String endpoint,
-      required GHttpMethod method,
+      required SmartHttpMethod method,
       Map<String, dynamic>? body,
       Map<String, dynamic>? queryParameters,
       Map<String, String>? headers,
@@ -66,7 +70,7 @@ class HttpClientServicesImpl implements HttpClientServices {
       bool useBytes = false,
       bool activatedInterceptor = true}) async {
     try {
-      late final ZukClientResponse? response;
+      late final SmartClientResponse? response;
 
       final hasConnection = await _connectivityService.hasConnection() ?? false;
 
@@ -79,13 +83,13 @@ class HttpClientServicesImpl implements HttpClientServices {
               ''');
       } else {
         switch (method) {
-          case GHttpMethod.get:
+          case SmartHttpMethod.get:
             response = await _get(endpoint,
                 headers: headers,
                 queryParameters: queryParameters,
                 useBytes: useBytes);
             break;
-          case GHttpMethod.post:
+          case SmartHttpMethod.post:
             response = await _post(endpoint,
                 body: body,
                 headers: headers,
@@ -93,21 +97,21 @@ class HttpClientServicesImpl implements HttpClientServices {
                 queryParameters: queryParameters,
                 useBytes: useBytes);
             break;
-          case GHttpMethod.put:
+          case SmartHttpMethod.put:
             response = await _put(endpoint,
                 body: body,
                 headers: headers,
                 queryParameters: queryParameters,
                 useBytes: useBytes);
             break;
-          case GHttpMethod.patch:
+          case SmartHttpMethod.patch:
             response = await _patch(endpoint,
                 body: body,
                 headers: headers,
                 queryParameters: queryParameters,
                 useBytes: useBytes);
             break;
-          case GHttpMethod.delete:
+          case SmartHttpMethod.delete:
             response = await _delete(endpoint,
                 body: body,
                 headers: headers,
@@ -151,10 +155,10 @@ class HttpClientServicesImpl implements HttpClientServices {
     Future<Response> client,
   ) async {
     Response? resp;
-    HTTPZukException? exception;
-    for (var i = 0; i < ZukHttpConstants.DEFAULT_QTD_TRIES; i++) {
+    HTTPSmartException? exception;
+    for (var i = 0; i < SmartHttpConstants.DEFAULT_QTD_TRIES; i++) {
       try {
-        resp = await client.timeout(ZukHttpConstants.DEFAULT_TIMEOUT_TIME);
+        resp = await client.timeout(SmartHttpConstants.DEFAULT_TIMEOUT_TIME);
         break;
       } catch (e) {
         exception = HttpRequestException(e.toString());
@@ -169,7 +173,7 @@ class HttpClientServicesImpl implements HttpClientServices {
             "Erro ao utilizar o serviço de internet do cliente");
   }
 
-  Future<ZukClientResponse?> _post(String url,
+  Future<SmartClientResponse?> _post(String url,
       {dynamic body,
       Map<String, String>? headers,
       Map<String, dynamic>? queryParameters,
@@ -186,7 +190,7 @@ class HttpClientServicesImpl implements HttpClientServices {
     return response?.toClientResponse();
   }
 
-  Future<ZukClientResponse?> _get(
+  Future<SmartClientResponse?> _get(
     String path, {
     Map<String, String>? headers,
     Map<String, dynamic>? queryParameters,
@@ -202,7 +206,7 @@ class HttpClientServicesImpl implements HttpClientServices {
     return response?.toClientResponse();
   }
 
-  Future<ZukClientResponse?> _delete(
+  Future<SmartClientResponse?> _delete(
     String url, {
     dynamic body,
     Map<String, String>? headers,
@@ -220,7 +224,7 @@ class HttpClientServicesImpl implements HttpClientServices {
     return response?.toClientResponse();
   }
 
-  Future<ZukClientResponse?> _put(
+  Future<SmartClientResponse?> _put(
     String url, {
     dynamic body,
     Map<String, String>? headers,
@@ -238,7 +242,7 @@ class HttpClientServicesImpl implements HttpClientServices {
     return response?.toClientResponse();
   }
 
-  Future<ZukClientResponse?> _patch(
+  Future<SmartClientResponse?> _patch(
     String url, {
     dynamic body,
     Map<String, String>? headers,
@@ -266,8 +270,8 @@ class HttpClientServicesImpl implements HttpClientServices {
   /// relevantes da requisição (URL, cabeçalhos, dados, código de status, mensagem de status)
   /// e envia para o serviço de analytics.
   ///
-  static void sendLogError(ZukClientResponse resp) async {
-    final user = await I.getDependency<ZukSecureStorageServices>().getUser();
+  static void sendLogError(SmartClientResponse resp) async {
+    final user = await I.getDependency<SmartSecureStorageServices>().getUser();
     Map<String, dynamic> error = {
       'id': user.client?.id ?? 0,
       'url': resp.realUri.toString(),
@@ -276,7 +280,7 @@ class HttpClientServicesImpl implements HttpClientServices {
       'statusCode': resp.statusCode.toString(),
       'statusMessage': resp.statusMessage,
     };
-    I.getDependency<ZukAnalyticsService>().backendError(error);
+    I.getDependency<SmartAnalyticsService>().backendError(error);
   }
 
   ///

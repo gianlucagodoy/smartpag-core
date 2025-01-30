@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 
 import '../helper.dart';
+import '../zuk_text_formatter_helper.dart';
 
 ///
 /// Essa classe é responsável por formatar a entrada de um valor monetário em um campo de texto.
@@ -29,7 +30,7 @@ class CurrencyInputFormatter extends TextInputFormatter {
             .replaceAll(RegExp(r"[^\s\w]"), '')) /
         100;
     final String formattedAmount =
-        ZukTextFormatterHelper.formatCurrency(amount);
+        SmartTextFormatterHelper.formatCurrency(amount);
     return newValue.copyWith(
         text: formattedAmount,
         selection: TextSelection.collapsed(offset: formattedAmount.length));

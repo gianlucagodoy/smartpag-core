@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smartpag_domain/smartpag_domain.dart';
 
 import '../../models/models.dart';
 import '../../utils/utils.dart';

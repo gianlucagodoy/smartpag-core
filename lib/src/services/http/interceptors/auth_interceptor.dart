@@ -1,6 +1,6 @@
-import 'package:zukcore/init_core.dart';
 import 'package:dio/dio.dart';
 
+import '../../../../app_lib_core.dart';
 import '../../../interfaces/interfaces.dart';
 
 ///
@@ -32,7 +32,7 @@ class AuthInterceptor extends Interceptor {
     RequestInterceptorHandler handler,
   ) async {
     final String token =
-        await I.getDependency<ZukSecureStorageServices>().getToken();
+        await I.getDependency<SmartSecureStorageServices>().getToken();
     if (token.isNotEmpty) {
       options.headers['Authorization'] = 'Bearer $token';
     }

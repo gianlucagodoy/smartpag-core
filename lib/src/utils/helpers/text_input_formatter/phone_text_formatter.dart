@@ -11,12 +11,12 @@ import '../masks/zuk_mask_text_input_formatters.dart';
 ///
 /// Nesse caso, o método remove todos os caracteres não numéricos do texto e verifica o comprimento
 /// do texto resultante. Se o comprimento for igual a 11, ele formata o texto como um número
-/// de telefone celular usando o  [phoneTextFormatter] da classe [ZukMaskTextInputFormatters]
+/// de telefone celular usando o  [phoneTextFormatter] da classe [SmartMaskTextInputFormatters]
 /// e atualiza a posição do cursor. Se o comprimento for igual a 12,
 /// ele formata o texto como um número de telefone fixo usando o [landlinePhoneTextFormatter]
-/// da classe [ZukMaskTextInputFormatters] e atualiza a posição do cursor.
+/// da classe [SmartMaskTextInputFormatters] e atualiza a posição do cursor.
 /// Caso contrário, ele formata o texto como um número de telefone fixo usando
-/// o [landlinePhoneTextFormatter] da classe [ZukMaskTextInputFormatters]
+/// o [landlinePhoneTextFormatter] da classe [SmartMaskTextInputFormatters]
 /// e atualiza a posição do cursor.
 ///
 /// O método [_updateCursorPosition] é responsável por calcular a nova posição do cursor
@@ -34,25 +34,25 @@ class PhoneMaskTextInputFormatter extends TextInputFormatter {
 
     if (text.length == 11) {
       return TextEditingValue(
-        text: ZukMaskTextInputFormatters.phoneTextFormatter.maskText(text),
+        text: SmartMaskTextInputFormatters.phoneTextFormatter.maskText(text),
         selection: _updateCursorPosition(newValue,
-            ZukMaskTextInputFormatters.phoneTextFormatter.maskText(text)),
+            SmartMaskTextInputFormatters.phoneTextFormatter.maskText(text)),
       );
     } else if (text.length == 12) {
       return TextEditingValue(
-        text: ZukMaskTextInputFormatters.phoneTextFormatter.maskText(text),
+        text: SmartMaskTextInputFormatters.phoneTextFormatter.maskText(text),
         selection: _updateCursorPosition(
             oldValue,
-            ZukMaskTextInputFormatters.phoneTextFormatter
+            SmartMaskTextInputFormatters.phoneTextFormatter
                 .maskText(oldValue.text.replaceAll(RegExp(r'[^\d]'), ''))),
       );
     } else {
       return TextEditingValue(
-        text: ZukMaskTextInputFormatters.landlinePhoneTextFormatter
+        text: SmartMaskTextInputFormatters.landlinePhoneTextFormatter
             .maskText(text),
         selection: _updateCursorPosition(
             newValue,
-            ZukMaskTextInputFormatters.landlinePhoneTextFormatter
+            SmartMaskTextInputFormatters.landlinePhoneTextFormatter
                 .maskText(text)),
       );
     }

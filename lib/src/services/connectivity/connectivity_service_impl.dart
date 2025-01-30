@@ -1,4 +1,5 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:smartpag_domain/enums/enums.dart';
 
 import '../../interfaces/services/connectivity/connectivity_service.dart';
 import '../../utils/utils.dart';
@@ -16,7 +17,7 @@ import '../../utils/utils.dart';
 /// Caso contrário, retorna false.
 /// O método [getConectivityStream] retorna um stream que emite eventos quando a conectividade do dispositivo muda.
 /// Ele utiliza o método [onConnectivityChanged] da classe [Connectivity] para obter os eventos de mudança de conectividade.
-/// Em seguida, mapeia os resultados para os valores do enum [ZukConnectivityStatus] e retorna o stream resultante.
+/// Em seguida, mapeia os resultados para os valores do enum [SmartConnectivityStatus] e retorna o stream resultante.
 /// Este serviço é utilizado para verificar a conectividade do dispositivo e permitir que o aplicativo reaja de acordo.
 ///
 class ConnectivityServiceImpl implements ConnectivityService {
@@ -42,33 +43,33 @@ class ConnectivityServiceImpl implements ConnectivityService {
   ///
   /// O método [getConectivityStream] retorna um stream que emite eventos quando a conectividade do dispositivo muda.
   /// Ele utiliza o método [onConnectivityChanged] da classe [Connectivity] para obter os eventos de mudança de conectividade.
-  /// Em seguida, mapeia os resultados para os valores do enum [ZukConnectivityStatus] e retorna o stream resultante.
+  /// Em seguida, mapeia os resultados para os valores do enum [SmartConnectivityStatus] e retorna o stream resultante.
   /// Este serviço é utilizado para verificar a conectividade do dispositivo e permitir que o aplicativo reaja de acordo.
   ///
   @override
-  Stream<ZukConnectivityStatus> getConectivityStream() =>
-      _ZukStreamConnectivity();
+  Stream<SmartConnectivityStatus> getConectivityStream() =>
+      _SmartStreamConnectivity();
 
-  Stream<ZukConnectivityStatus> _ZukStreamConnectivity() {
-    final Stream<ZukConnectivityStatus> ZukStream =
-        connectivity.onConnectivityChanged.asyncMap<ZukConnectivityStatus>(
+  Stream<SmartConnectivityStatus> _SmartStreamConnectivity() {
+    final Stream<SmartConnectivityStatus> SmartStream =
+        connectivity.onConnectivityChanged.asyncMap<SmartConnectivityStatus>(
       (connecty) async {
         switch (connecty) {
           case ConnectivityResult.bluetooth:
-            return ZukConnectivityStatus.bluetooth;
+            return SmartConnectivityStatus.bluetooth;
           case ConnectivityResult.wifi:
-            return ZukConnectivityStatus.wifi;
+            return SmartConnectivityStatus.wifi;
           case ConnectivityResult.ethernet:
-            return ZukConnectivityStatus.ethernet;
+            return SmartConnectivityStatus.ethernet;
           case ConnectivityResult.mobile:
-            return ZukConnectivityStatus.mobile;
+            return SmartConnectivityStatus.mobile;
           case ConnectivityResult.none:
-            return ZukConnectivityStatus.none;
+            return SmartConnectivityStatus.none;
           default:
-            return ZukConnectivityStatus.none;
+            return SmartConnectivityStatus.none;
         }
       },
     );
-    return ZukStream;
+    return SmartStream;
   }
 }

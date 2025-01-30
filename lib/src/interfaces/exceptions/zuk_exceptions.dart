@@ -1,5 +1,5 @@
-/// A classe abstrata de interface [ZukException] é uma classe base para exceções
-/// personalizadas no contexto do projeto Zuk. Ela implementa a interface [Exception]
+/// A classe abstrata de interface [SmartException] é uma classe base para exceções
+/// personalizadas no contexto do projeto Smart. Ela implementa a interface [Exception]
 /// e possui um construtor que recebe o nome da classe e uma mensagem opcional como parâmetros.
 /// A classe também possui as propriedades [message] e [className], que armazenam a mensagem e o nome da classe,
 /// respectivamente.
@@ -7,8 +7,8 @@
 /// O método "toString()" é sobrescrito para retornar uma representação em string da exceção.
 /// Ele verifica se a propriedade [message] é uma string e, caso seja,
 /// retorna a combinação do nome da classe e da mensagem. Caso contrário, retorna apenas o nome da classe.
-abstract interface class ZukException implements Exception {
-  const ZukException(
+abstract interface class SmartException implements Exception {
+  const SmartException(
     this.className, [
     this.message,
   ]);

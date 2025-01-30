@@ -70,7 +70,7 @@ extension WidgetTesterExt on WidgetTester {
                   if (navigatorObserver != null) navigatorObserver,
                 ],
                 //locale: const Locale('en'),
-                navigatorKey: ZukNavigator.navigatorKey,
+                navigatorKey: SmartNavigator.navigatorKey,
                 routes: routes ?? {},
                 home: widget,
               );
@@ -145,7 +145,7 @@ MockNavigatorProvider _buildNavigatorProvider(
           if (navigatorObserver != null) navigatorObserver,
         ],
         locale: const Locale('en'),
-        navigatorKey: ZukNavigator.navigatorKey,
+        navigatorKey: SmartNavigator.navigatorKey,
         routes: routes ?? {},
         home: widget,
       ),

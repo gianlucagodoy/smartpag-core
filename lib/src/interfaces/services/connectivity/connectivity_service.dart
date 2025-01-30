@@ -1,3 +1,5 @@
+import 'package:smartpag_domain/enums/enums.dart';
+
 import '../../../utils/dependencies/dependecies.dart';
 
 ///
@@ -7,5 +9,5 @@ import '../../../utils/dependencies/dependecies.dart';
 ///
 abstract class ConnectivityService {
   Future<bool>? hasConnection();
-  Stream<ZukConnectivityStatus>? getConectivityStream();
+  Stream<SmartConnectivityStatus>? getConectivityStream();
 }

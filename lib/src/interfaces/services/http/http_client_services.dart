@@ -1,3 +1,6 @@
+import 'package:smartpag_domain/entities/entities.dart';
+import 'package:smartpag_domain/enums/enums.dart';
+
 import '../../../utils/dependencies/dependecies.dart';
 
 ///
@@ -19,10 +22,10 @@ abstract class HttpClientServices {
   /// utilizando diferentes métodos HTTP (GET, POST, PUT, DELETE, etc.), e retornar uma resposta em formato JSON
   /// dentro o [GClientResponse] no parametro data.
   ///
-  Future<ZukClientResponse> request({
-    required ZukApiName apiName,
+  Future<SmartClientResponse> request({
+    required SmartApiName apiName,
     required String endpoint,
-    required GHttpMethod method,
+    required SmartHttpMethod method,
     Map<String, dynamic>? body,
     Map<String, dynamic>? queryParameters,
     Map<String, String>? headers,

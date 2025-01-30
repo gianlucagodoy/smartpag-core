@@ -1,5 +1,6 @@
-import 'package:zukcore/src/interfaces/interfaces.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../../app_lib_core.dart';
 
 ///
 /// A classe [PrefsServiceImpl] é uma implementação da interface [PrefsService] que lida com o

@@ -1,11 +1,12 @@
-import 'package:zukcore/src/core.dart';
 import 'package:get_it/get_it.dart';
 
-///A variável "I" é uma instância do serviço de injeção de dependência do Zuk
-late final ZukInjectorServices I;
+import 'app_lib_core.dart';
 
-///A variável "logger" é uma instância do serviço de registro de logs do Zuk.
-late final ZukLoggerServices logger;
+///A variável "I" é uma instância do serviço de injeção de dependência do Smart
+late final SmartInjectorServices I;
+
+///A variável "logger" é uma instância do serviço de registro de logs do Smart.
+late final SmartLoggerServices logger;
 
 /// {@tool snippet}
 ///
@@ -25,6 +26,6 @@ late final ZukLoggerServices logger;
 ///
 /// {@end-tool}
 Future<void> initCore() async {
-  I = ZukInjectorServicesImpl(GetIt.instance);
-  logger = ZukLoggerServicesImpl()..init();
+  I = SmartInjectorServicesImpl(GetIt.instance);
+  logger = SmartLoggerServicesImpl()..init();
 }

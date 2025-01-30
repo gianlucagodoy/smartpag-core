@@ -1,4 +1,5 @@
 import 'package:local_auth/local_auth.dart';
+import 'package:smartpag_domain/smartpag_domain.dart';
 import '../../core.dart';
 
 ///
@@ -8,7 +9,7 @@ import '../../core.dart';
 ///
 /// Ele também verifica se o dispositivo suporta biometria e lista os tipos de biometria disponíveis.
 ///
-/// As opções de autenticação podem ser passadas pelo parâmetro [ZukAuthenticationOptions].
+/// As opções de autenticação podem ser passadas pelo parâmetro [SmartAuthenticationOptions].
 ///
 /// Todos os métodos retornam um Future que resolve para um booleano indicando se a autenticação foi bem-sucedida ou não.
 ///
@@ -33,8 +34,8 @@ class LocalAuthServicesImpl implements LocalAuthServices {
   @override
   Future<bool> authenticate(
       {required String localizedReason,
-      required Iterable<ZukAuthMessages> authMessages,
-      required ZukAuthenticationOptions options}) async {
+      required Iterable<SmartAuthMessages> authMessages,
+      required SmartAuthenticationOptions options}) async {
     return _localAuthentication.authenticate(
         localizedReason: localizedReason,
         authMessages: authMessages,
@@ -59,13 +60,13 @@ class LocalAuthServicesImpl implements LocalAuthServices {
   ///
   /// Obtém uma lista dos tipos de autenticação biométrica disponíveis no dispositivo.
   ///
-  /// @return Um [Future] que retorna uma lista de [ZukBiometricType]
+  /// @return Um [Future] que retorna uma lista de [SmartBiometricType]
   /// indicando os tipos de autenticação biométrica disponíveis.
   ///
   @override
-  Future<List<ZukBiometricType>> getAvailableBiometrics() async {
+  Future<List<SmartBiometricType>> getAvailableBiometrics() async {
     return (await _localAuthentication.getAvailableBiometrics())
-        .map((e) => ZukBiometricType.values[e.index])
+        .map((e) => SmartBiometricType.values[e.index])
         .toList();
   }
 
